@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <LCB_CustomMessages>
+            <version>0.1.0</version>
+        </LCB_CustomMessages>
+    </modules>
+    <global>
+        <blocks>
+            <lcb_custom_messages>
+                <class>LCB_CustomMessages_Block</class>
+            </lcb_custom_messages>
+        </blocks>        
+        <helpers>
+            <lcb_custom_messages>
+                <class>LCB_CustomMessages_Helper</class>
+            </lcb_custom_messages>
+        </helpers>
+        <models>
+            <lcb_custom_messages>
+                <class>LCB_CustomMessages_Model</class>
+            </lcb_custom_messages>
+        </models>
+    </global>
+    <frontend>
+        <events>
+            <controller_action_layout_load_before>
+                <observers>
+                    <lcb_custom_messages_controller_action_layout_load_before>
+                        <class>lcb_custom_messages/observer</class>
+                        <method>beforeLoadLayout</method>
+                    </lcb_custom_messages_controller_action_layout_load_before>
+                </observers>
+            </controller_action_layout_load_before>
+        </events>
+    </frontend>
+</config>
