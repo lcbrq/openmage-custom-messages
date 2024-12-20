@@ -21,7 +21,10 @@ class LCB_CustomMessages_Helper_Data extends Mage_Core_Helper_Abstract
                 if ($unserializedConfig = unserialize($config)) {
                     foreach ($unserializedConfig as $handleData) {
                         if ($handleData['active']) {
-                            $handles[$handleData['handle']][] = $handleData['message'];
+                            $handles[$handleData['handle']][] = [
+                                'title'  => $handleData['title'] ?? '',
+                                'message' => $handleData['message'] ?? '',
+                            ];
                         }
                     }
                 }

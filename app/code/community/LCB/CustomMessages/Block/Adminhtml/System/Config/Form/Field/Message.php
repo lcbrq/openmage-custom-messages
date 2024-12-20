@@ -19,6 +19,11 @@ class LCB_CustomMessages_Block_Adminhtml_System_Config_Form_Field_Message extend
             'style' => 'width:160px',
         ));
 
+        $this->addColumn('title', array(
+            'label' => Mage::helper('adminhtml')->__('Title'),
+            'style' => 'width:120px',
+        ));
+
         $this->addColumn('message', array(
             'label' => Mage::helper('adminhtml')->__('Message'),
             'style' => 'width:600px',
