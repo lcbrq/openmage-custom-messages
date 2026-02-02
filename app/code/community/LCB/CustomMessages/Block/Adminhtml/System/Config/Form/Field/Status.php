@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author Tomasz Gregorczyk <tom@lcbrq.com>
  */
