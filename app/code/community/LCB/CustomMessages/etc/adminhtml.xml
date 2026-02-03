@@ -1,5 +1,16 @@
 <?xml version="1.0"?>
 <adminhtml>
+    <menu>
+        <cms>
+            <children>
+                <lcb_custom_messages>
+                    <title>Notifications</title>
+                    <sort_order>75</sort_order>
+                    <action>adminhtml/customMessages_notifications/index</action>
+                </lcb_custom_messages>
+            </children>
+        </cms>
+    </menu>
     <acl>
         <resources>
             <admin>

@@ -6,9 +6,9 @@
 class LCB_CustomMessages_Helper_Data extends Mage_Core_Helper_Abstract
 {
     /**
-     * @var string
-     */
-    public const XPATH_CUSTOM_MESSAGES_HANDLES = 'lcb_custom_messages/settings/handles';
+      * @var string
+      */
+    public const XPATH_CUSTOM_MESSAGES_ENABLED = 'lcb_custom_messages/settings/enable';
 
     /**
      * @return array
@@ -17,21 +17,20 @@ class LCB_CustomMessages_Helper_Data extends Mage_Core_Helper_Abstract
     {
         $handles = [];
 
-        if ($config = Mage::getStoreConfig(self::XPATH_CUSTOM_MESSAGES_HANDLES, Mage::app()->getStore())) {
-            try {
-                if ($unserializedConfig = unserialize($config)) {
-                    foreach ($unserializedConfig as $handleData) {
-                        if ($handleData['active']) {
-                            $handles[$handleData['handle']][] = [
-                                'title'  => $handleData['title'] ?? '',
-                                'message' => $handleData['message'] ?? '',
-                            ];
-                        }
-                    }
-                }
-            } catch (Exception $e) {
-                Mage::logException($e);
-            }
+        if (!Mage::getStoreConfigFlag(self::XPATH_CUSTOM_MESSAGES_ENABLED)) {
+            return $handles;
+        }
+
+        $collection = Mage::getModel('lcb_custom_messages/notification')
+                ->getCollection()
+                ->addFieldToFilter('status', true);
+
+        foreach ($collection as $notification) {
+            $handles[$notification->getHandle()][] = [
+                'title' => $notification->getTitle(),
+                'message' => $notification->getMessage(),
+                'type' => $notification->getType(),
+            ];
         }
 
         return $handles;

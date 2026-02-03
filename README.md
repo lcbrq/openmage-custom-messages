@@ -2,10 +2,9 @@
 
 Render any message on any OpenMage route.
 
-# Version
+# Uninstall
 
-Beta
-
-# Configuration
-
-Go to System -> Configuration -> LCBRQ -> Custom Messages
+```
+DELETE FROM `core_resource` WHERE `code` = 'lcb_custom_messages_setup';
+DROP TABLE `lcb_custom_messages_notification`;
+```

@@ -2,7 +2,7 @@
 <config>
     <modules>
         <LCB_CustomMessages>
-            <version>0.1.0</version>
+            <version>1.0.0</version>
         </LCB_CustomMessages>
     </modules>
     <global>
@@ -19,8 +19,24 @@
         <models>
             <lcb_custom_messages>
                 <class>LCB_CustomMessages_Model</class>
+                <resourceModel>lcb_custom_messages_resource</resourceModel>
             </lcb_custom_messages>
+            <lcb_custom_messages_resource>
+                <class>LCB_CustomMessages_Model_Resource</class>
+                <entities>
+                    <notification>
+                        <table>lcb_custom_messages_notification</table>
+                    </notification>
+                </entities>
+            </lcb_custom_messages_resource>
         </models>
+        <resources>
+            <lcb_custom_messages_setup>
+                <setup>
+                    <module>LCB_CustomMessages</module>
+                </setup>
+            </lcb_custom_messages_setup>
+        </resources>
     </global>
     <frontend>
         <events>
@@ -34,4 +50,33 @@
             </controller_action_layout_load_before>
         </events>
     </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <LCB_CustomMessages before="Mage_Adminhtml">LCB_CustomMessages_Adminhtml</LCB_CustomMessages>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <translate>
+            <modules>
+                <LCB_CustomMessages>
+                    <files>
+                        <default>LCB_CustomMessages.csv</default>
+                    </files>
+                </LCB_CustomMessages>
+            </modules>
+        </translate>
+    </adminhtml>
+    <default>
+        <lcb_custom_messages>
+            <settings>
+                <enable>1</enable>
+            </settings>
+        </lcb_custom_messages>
+    </default>
 </config>
