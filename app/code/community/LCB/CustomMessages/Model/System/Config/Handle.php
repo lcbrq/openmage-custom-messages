@@ -9,7 +9,7 @@ class LCB_CustomMessages_Model_System_Config_Handle extends Mage_Core_Model_Conf
     {
         $helper = Mage::helper('core');
 
-        return array(
+        $options = array(
             'custom' => $helper->__('Custom'),
             'default' => $helper->__('Default'),
 
@@ -59,5 +59,13 @@ class LCB_CustomMessages_Model_System_Config_Handle extends Mage_Core_Model_Conf
             'contacts_index_index'    => $helper->__('Contact form'),
             'newsletter_manage_index' => $helper->__('Newsletter Subscriptions'),
         );
+
+        asort($options);
+
+        foreach ($options as $key => $option) {
+            $options[$key] = "$option ($key)";
+        }
+
+        return $options;
     }
 }

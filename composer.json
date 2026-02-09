@@ -1,7 +1,7 @@
 {
     "name": "lcbrq/openmage-custom-messages",
     "type": "magento-module",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Render any message on any OpenMage route.",
     "license": [
         "OSL-3.0",

@@ -63,8 +63,8 @@ class LCB_CustomMessages_Block_Adminhtml_Notification_Edit_Form extends Mage_Adm
         ]);
 
         if (!Mage::app()->isSingleStoreMode()) {
-            $fieldset->addField('store_id', 'multiselect', array(
-                'name' => 'stores[]',
+            $fieldset->addField('store_id', 'select', array(
+                'name' => 'store_id',
                 'label' => $this->__('Store View'),
                 'title' => $this->__('Store View'),
                 'required' => true,
@@ -72,7 +72,7 @@ class LCB_CustomMessages_Block_Adminhtml_Notification_Edit_Form extends Mage_Adm
             ));
         } else {
             $fieldset->addField('store_id', 'hidden', array(
-                'name' => 'stores[]',
+                'name' => 'store_id',
                 'value' => Mage::app()->getStore(true)->getId(),
             ));
         }

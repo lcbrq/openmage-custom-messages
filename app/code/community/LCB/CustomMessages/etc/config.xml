@@ -2,7 +2,7 @@
 <config>
     <modules>
         <LCB_CustomMessages>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </LCB_CustomMessages>
     </modules>
     <global>
