@@ -50,6 +50,14 @@ class LCB_CustomMessages_Block_Adminhtml_Notification_Edit_Form extends Mage_Adm
             'options' => Mage::getSingleton('lcb_custom_messages/system_config_type')->toOptionArray(),
         ]);
 
+        $fieldset->addField('show_mode', 'select', [
+            'name'     => 'show_mode',
+            'label'    => $this->__('Show mode'),
+            'required' => true,
+            'type' => 'options',
+            'options' => Mage::getSingleton('lcb_custom_messages/system_config_showMode')->toOptionArray(),
+        ]);
+
         $fieldset->addField('title', 'text', [
             'name'     => 'title',
             'label'    => $this->__('Title'),

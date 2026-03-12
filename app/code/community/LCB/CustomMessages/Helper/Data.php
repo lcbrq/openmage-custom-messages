@@ -30,6 +30,8 @@ class LCB_CustomMessages_Helper_Data extends Mage_Core_Helper_Abstract
                 'title' => $notification->getTitle(),
                 'message' => $notification->getMessage(),
                 'type' => $notification->getType(),
+                'entity_id' => $notification->getId(),
+                'show_mode' => $notification->getData('show_mode'),
             ];
         }
 

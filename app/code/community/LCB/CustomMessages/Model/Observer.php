@@ -19,7 +19,20 @@ class LCB_CustomMessages_Model_Observer
                 foreach ($layoutHandles as $layoutHandle) {
                     if (!empty($messageHandles[$layoutHandle])) {
                         foreach ($messageHandles[$layoutHandle] as $notification) {
+                            $session   = Mage::getSingleton('core/session');
+                            $messageId = (int) $notification['entity_id'];
+                            $showMode  = (int) $notification['show_mode'];
                             $message = $notification['message'];
+                            $sessionKey = 'custom_message_shown_' . $messageId;
+
+                            if ($showMode === 0) {
+                                $session->unsetData($sessionKey);
+                            }
+
+                            if ($showMode === 1 && $session->getData($sessionKey)) {
+                                continue;
+                            }
+
                             switch ($notification['type']) {
                                 case 'warning':
                                     Mage::getSingleton('core/session')->addWarning($message);
@@ -30,6 +43,10 @@ class LCB_CustomMessages_Model_Observer
                                 default:
                                     Mage::getSingleton('core/session')->addNotice($message);
                                     break;
+                            }
+
+                            if ($showMode === 1) {
+                                $session->setData($sessionKey, true);
                             }
                         }
                     }
