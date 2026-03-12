@@ -54,7 +54,7 @@ class LCB_CustomMessages_Block_Adminhtml_Notification_Grid extends Mage_Adminhtm
                'options' => Mage::getSingleton('lcb_custom_messages/system_config_showMode')->toOptionArray(),
             )
         );
-        
+
         $this->addColumn(
             'type',
             array(
