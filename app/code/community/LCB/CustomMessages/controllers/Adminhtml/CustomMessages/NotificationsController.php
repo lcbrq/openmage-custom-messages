@@ -38,6 +38,13 @@ class LCB_CustomMessages_Adminhtml_CustomMessages_NotificationsController extend
             if ($model->getStatus() === null) {
                 $model->setStatus(true);
             }
+
+            if ($additionalData = $model->getAdditionalData()) {
+                foreach ($additionalData as $key => $value) {
+                    $model->setData($key, $value);
+                }
+            }
+
             Mage::register('notification_data', $model);
             $this->loadLayout();
             $this->_setActiveMenu('cms/notifications');
@@ -71,6 +78,9 @@ class LCB_CustomMessages_Adminhtml_CustomMessages_NotificationsController extend
             if ($data['handle'] === 'custom' && !empty($data['custom_handle'])) {
                 $data['handle'] = $data['custom_handle'];
             }
+
+            $data['additional_data'] = json_encode($data['additional_data'] ?? '');
+
             $model = Mage::getModel('lcb_custom_messages/notification');
             $id = $this->getRequest()->getParam('id');
             $model->setData($data)->setId($id);

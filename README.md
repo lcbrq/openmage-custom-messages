@@ -43,6 +43,41 @@ class Vendor_Module_Rewrite_CustomMessages_Model_System_Config_Handle extends LC
 }
 ```
 
+# Extending message visibility rules
+
+```
+<config>
+    <modules>
+        <Vendor_Module>
+            <version>1.0.0</version>
+        </Vendor_Module>
+    </modules>
+    <global>
+        <blocks>
+            <lcb_custom_messages>
+                <rewrite>
+                    <adminhtml_notification_edit_form>Vendor_Module_Block_Adminhtml_Notification_Edit_Form</adminhtml_notification_edit_form>
+                </rewrite>
+            </lcb_custom_messages>
+        </blocks>
+    </global>
+    <frontend>
+        <events>
+            <lcb_custom_messages_notifications_load_after>
+                <observers>
+                    <vendor_notifications_load_affer>
+                        <class>vendor_module/observer</class>
+                        <method>restrictNotifications</method>
+                    </vendor_notifications_load_affer>
+                </observers>
+            </lcb_custom_messages_notifications_load_after>
+        </events>
+    </frontend>
+</config>
+```
+
+Any new field with additional_data[name] would be automatically saved to the database.
+
 # Uninstall
 
 ```
