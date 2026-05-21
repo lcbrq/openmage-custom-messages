@@ -8,10 +8,7 @@ class LCB_CustomMessages_Adminhtml_CustomMessages_NotificationsController extend
     /**
      * @inheritDoc
      */
-    protected function _isAllowed()
-    {
-        return Mage::getSingleton('admin/session')->isAllowed('lcb_custom_messages');
-    }
+    public const ADMIN_RESOURCE = 'lcb_custom_messages';
 
     /**
      * Show logs grid

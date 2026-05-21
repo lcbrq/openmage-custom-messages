@@ -28,7 +28,7 @@ class LCB_CustomMessages_Block_Adminhtml_Notification_Edit extends Mage_Adminhtm
         if (Mage::registry('notification_data') && Mage::registry('notification_data')->getId()) {
             return Mage::helper('lcb_custom_messages')->__(
                 "Edit Notification '%s'",
-                $this->htmlEscape(Mage::registry('notification_data')->getTitle())
+                $this->escapeHtml(Mage::registry('notification_data')->getTitle())
             );
         } else {
             return Mage::helper('lcb_custom_messages')->__('Add Notification');
